@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>当前系统时间</title>
+<link rel="stylesheet" href="style.css"  />
+
+<script language="javascript" type="text/javascript">
+  window.onload = function(){
+    showTime();
+  }
+  function checkTime(i){  //补位处理,分和秒位上，出现个位数时在十位上补“0”
+      if(i<10){
+          i="0"+i;
+      }
+      return i;
+  }
+  function showTime(){
+    var now=new Date();
+    var year=  now.getFullYear();
+    var month= now.getMonth()+1;
+    var date=  now.getDate();
+    var day= now.getDay();
+    var h=  now.getHours();
+    var m=  now.getMinutes();
+    var s=  now.getSeconds();
+    m=checkTime(m)
+    s=checkTime(s)
+
+    //输出星期几的数组
+    var weekday=new Array(7)
+    weekday[0]="星期日"
+    weekday[1]="星期一"
+    weekday[2]="星期二"
+    weekday[3]="星期三"
+    weekday[4]="星期四"
+    weekday[5]="星期五"
+    weekday[6]="星期六"
+
+    document.getElementById("show").innerHTML=": "+year+"年"+month+"月"+date+"日 "+  weekday[day] +" "+h+":"+m+":"+s;
+    setTimeout('showTime()',500);
+  }
+
+</script>
+</head>
+<body>
+<div class="content1">
+  <div id="">当前日期时间<span id="show"></span></div>
+</div>
+
+<hr style="margin:10px 0 10px 0" />
+<div style="margin:0 auto 0 auto; width:750px; height:600px ">
+  <textarea style="height:600px; width:750px">
+注意：
+    1.获取一般写法的年份要用getFullYear()，getYear()是获取相对于1970年至当前系统时间的年份
+    2.getMonth()获得的月份由0开始（0~11）
+    3.getDate()获得日期，getDay()获取星期几，都由1开始
+
+-----------------------------------------------------------------------------------------------
+
+html 代码：
+    <div class="content1">
+       <div id="">当前日期时间<span id="show"></span></div>
+    </div>
+
+-----------------------------------------------------------------------------------------------
+
+js代码：
+
+  window.onload = function(){
+    showTime();
+  }
+  function checkTime(i){  //补位处理,分和秒位上，出现个位数时在十位上补“0”
+      if(i<10){
+          i="0"+i;
+      }
+      return i;
+  }
+  function showTime(){
+    var now=new Date();
+    var year=  now.getFullYear();
+    var month= now.getMonth()+1;
+    var date=  now.getDate();
+    var day= now.getDay();
+    var h=  now.getHours();
+    var m=  now.getMinutes();
+    var s=  now.getSeconds();
+    m=checkTime(m)
+    s=checkTime(s)
+
+    //输出星期几的数组
+    var weekday=new Array(7)
+    weekday[0]="星期日"
+    weekday[1]="星期一"
+    weekday[2]="星期二"
+    weekday[3]="星期三"
+    weekday[4]="星期四"
+    weekday[5]="星期五"
+    weekday[6]="星期六"
+
+    document.getElementById("show").innerHTML=": "+year+"年"+month+"月"+date+"日 "+  weekday[day] +" "+h+":"+m+":"+s;
+    setTimeout('showTime()',500);
+  }
+  </textarea>
+</div>
+</body>
+</html>
